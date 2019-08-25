@@ -5,5 +5,10 @@
     {% endfor %}
 </ul>
 {% endif %}
-<h1>{{ object.title }}</h1>
-<p>{{ object.content }}</p>
+
+<h1>Update {{object.title}}</h1>
+
+<form method="POST" action="."> {% csrf_token  %}
+    {{ form.as_p }}
+    <input type="submit" value='Create'>
+</form>

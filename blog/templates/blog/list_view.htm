@@ -1,9 +1,20 @@
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <h1>Hello World</h1> 
-{{ object_list }}
+
+{% include "blog/search.htm" %}
+
 {% for object in object_list %}
-<li>
+<hr>
+<li>>
     <a href="/blog/{{ object.id }}"> {{object.title}} </a> 
-    <a href="{% url 'blog:detail' id=object.id %}">{{object.title}}</a>
-    <a href="{{ object.get_absolute_url }}">{{object.title}}</a>
+    <!--<a href="{% url 'blog:detail' id=object.id %}">{{object.title}}</a> 
+    <a href="{{ object.get_absolute_url }}">{{object.title}}</a>-->
 </li>
 {% endfor %}
